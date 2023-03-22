@@ -1,6 +1,9 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+
+			token: sessionStorage.getItem("token") || null,
+
 			message: null,
 			demo: [
 				{
@@ -16,6 +19,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
+			
+
+
+			registerUser: (for) => {},
+
+			loginUser: () => {},
+
+			logoutUser: () => {},
+			
+
+
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");

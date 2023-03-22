@@ -1,9 +1,12 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const Register = () => {
     
     const navigate = useNavigate()
+
+
 
     return (
         <>
