@@ -16,3 +16,19 @@ def handle_hello():
     }
 
     return jsonify(response_body), 200
+
+@api.route('/register', methods=['POST'])
+def add_user():
+    if request.method == "POST":
+        body = request.json
+        email = body.get("email", None)
+        password = body.get("password", None)
+        try:
+            if email is None or password is None:
+                raise Exception("No ingresaste todos los datos", 400)
+            user = User(email=email, password=password)
+            db.session.add(user)
+            db.session.commit()
+            return jsonify("Message" "User Created!")
+        except Exception as error:
+            return jsonify(error.args[0]), error.args[1]
