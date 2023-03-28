@@ -13,11 +13,12 @@ export const Login = () => {
     const { store, actions } = useContext(Context);
     const navigate = useNavigate();
     const login = async (event) => {
-        const response = await actions.login(
+        event.preventDefault();
+        const response = await actions.loginUser(
             email,
             password
         );
-        console.log(Text);
+        console.log(response);
         if (response) {
             <div className="toast" role="alert" aria-live="assertive" aria-atomic="true">
               <div className="toast-header">
@@ -53,7 +54,7 @@ export const Login = () => {
                 <h1 className="text-center">Login</h1>
                 <form onSubmit={login}>
                     <div className="mx-auto col-8">
-                        <label for="exampleInputEmail1" className="form-label">
+                        <label htmlFor="exampleInputEmail1" className="form-label">
                             Email address
                         </label>
                         <input 
@@ -67,7 +68,7 @@ export const Login = () => {
                         />
                     </div>
                     <div className="mx-auto col-8">
-                        <label for="exampleInputPassword1" className="form-label">
+                        <label htmlFor="exampleInputPassword1" className="form-label">
                             Password
                         </label>
                         <input 
@@ -85,9 +86,7 @@ export const Login = () => {
                         </Link>
                     </div>
                     <div className="mx-auto col-8">
-                        <button type="submit" className="btn btn-primary">
-                            Iniciar Sesión
-                        </button>
+                        <input type="submit" className="btn btn-primary" value="Iniciar Sesión" />
                     </div>
                 </form>
             </div>

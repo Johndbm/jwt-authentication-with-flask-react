@@ -10,11 +10,11 @@ export const Register = () => {
     const { store, actions } = useContext(Context);
     const navigate = useNavigate();
     const register = async (event) => {
-        const response = await actions.register(
+        event.preventDefault();
+        const response = await actions.registerUser(
             email,
             password
         );
-        console.log(Text);
         if (response) {
             <div className="toast" role="alert" aria-live="assertive" aria-atomic="true">
               <div className="toast-header">
@@ -50,7 +50,7 @@ export const Register = () => {
                 <h1 className="text-center">Registrate</h1>
                 <form onSubmit={register}>
                     <div className="mx-auto col-8">
-                        <label for="exampleInputEmail1" className="form-label">
+                        <label htmlFor="exampleInputEmail1" className="form-label">
                             Email address
                         </label>
                         <input 
@@ -64,7 +64,7 @@ export const Register = () => {
                         />
                     </div>
                     <div className="mx-auto col-8">
-                        <label for="exampleInputPassword1" className="form-label">
+                        <label htmlFor="exampleInputPassword1" className="form-label">
                             Password
                         </label>
                         <input 
@@ -82,9 +82,7 @@ export const Register = () => {
                         </Link>
                     </div>
                     <div className="mx-auto col-8">
-                        <button type="submit" className="btn btn-primary">
-                            Registrar
-                        </button>
+                        <input type="submit"  className="btn btn-primary" value="Registrar" />
                     </div>
                 </form>
             </div>
