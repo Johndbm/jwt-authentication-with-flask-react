@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 
@@ -42,7 +42,9 @@ export const Register = () => {
         }
     };
 
-
+    useEffect(() => {
+        if (store.token && store.token !== null) navigate("/private")
+    }, [store.token])
 
     return (
         <>

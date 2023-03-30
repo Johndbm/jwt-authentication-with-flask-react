@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 
@@ -31,6 +31,7 @@ export const Login = () => {
                 Bienvenido a la plataforma!
               </div>
             </div>
+            navigate("/private")
         } else {
             <div className="toast" role="alert" aria-live="assertive" aria-atomic="true">
               <div className="toast-header">
@@ -46,7 +47,9 @@ export const Login = () => {
         }
     };
 
-
+useEffect(() => {
+    if (store.token && store.token !== null) navigate("/private")
+}, [store.token])
 
     return (
         <>
